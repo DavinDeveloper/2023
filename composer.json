@@ -1,0 +1,8 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "illuminate/database": "^10.33",
+        "illuminate/events": "^10.33",
+        "illuminate/container": "^10.33"
+    }
+}

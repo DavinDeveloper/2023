@@ -1,0 +1,9 @@
+.count-notify{
+    font-size:0.6rem;
+    font-weight: 600;
+    padding:0.01rem 0.4rem;
+    border-radius:50%;
+    margin-left:-.5rem;
+    top:0.8rem;
+    position:absolute;    
+}
