@@ -68,8 +68,9 @@
                                             <th>From</th>
                                             <th>Assigned To</th>
                                             <th>Units</th>
-                                            <th>Status</th>
                                             <th>Poin</th>
+                                            <th>Pengerjaan</th>
+                                            <th>Status</th>
                                             <th>Topic</th>
                                             <th>Action</th>
                                         </tr>
@@ -104,7 +105,18 @@
                                                 $sql = "SELECT number_phone FROM users WHERE id = '".$fetch['t_assigned']."'";
                                                 $check_user = $db->prepare($sql);
                                                 $check_user->execute();
-                                                $data_user = $check_user->fetch()
+                                                $data_user = $check_user->fetch();
+                                                if (!empty($fetch['t_date_start']) && !empty($fetch['t_date_end'])) {
+                                                    $t_date_start = DateTime::createFromFormat('d-m-Y h:i a', $fetch['t_date_start']);
+                                                    $t_date_end = DateTime::createFromFormat('d-m-Y h:i a', $fetch['t_date_end']);
+                                                    
+                                                    $interval = $t_date_start->diff($t_date_end);
+                                                    $minutes = $interval->days * 24 * 60 + $interval->h * 60 + $interval->i; // Menghitung total menit
+                                            
+                                                    $pengerjaan = $minutes . " menit";
+                                                } else {
+                                                    $pengerjaan = "-";
+                                                }
                                         ?>
                                         <tr>
                                             <td>
@@ -143,10 +155,13 @@
                                                 <?php echo $fetch['n_unit']?>
                                             </td>
                                             <td>
-                                                <?php echo $fetch['t_status']?>
+                                                <?php echo $fetch['n_poin']?>
                                             </td>
                                             <td>
-                                                <?php echo $fetch['n_poin']?>
+                                            <?php echo $pengerjaan?>
+                                            </td>
+                                            <td>
+                                                <?php echo $fetch['t_status']?>
                                             </td>
                                             <td>
                                                 <?php echo $fetch['n_topic']?>

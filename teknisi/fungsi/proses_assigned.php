@@ -36,6 +36,12 @@ if (empty($id)) {
         $stmt->bindParam(':id', $id);
 
         if ($status == 'Process') {
+            $sqlStartDate = "UPDATE tiket SET t_date_start = :currentDate WHERE id_tiket = :id";
+            $stmtStartDate = $db->prepare($sqlStartDate);
+            $stmtStartDate->bindParam(':currentDate', $currentDate);
+            $stmtStartDate->bindParam(':id', $id);
+            $stmtStartDate->execute();
+
             $sqlStartDate = "SELECT t_created_date FROM tiket WHERE id_tiket = :id";
             $stmtStartDate = $db->prepare($sqlStartDate);
             $stmtStartDate->bindParam(':id', $id);
@@ -62,6 +68,12 @@ if (empty($id)) {
             $stmtUpdatePoin->bindParam(':id', $id);
             $stmtUpdatePoin->execute();
         } else if ($status == 'Closed') {
+            $sqlStartDate = "UPDATE tiket SET t_date_end = :currentDate WHERE id_tiket = :id";
+            $stmtStartDate = $db->prepare($sqlStartDate);
+            $stmtStartDate->bindParam(':currentDate', $currentDate);
+            $stmtStartDate->bindParam(':id', $id);
+            $stmtStartDate->execute();
+
             $sqlStartDate = "SELECT t_date_start FROM tiket WHERE id_tiket = :id";
             $stmtStartDate = $db->prepare($sqlStartDate);
             $stmtStartDate->bindParam(':id', $id);
