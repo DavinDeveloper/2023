@@ -80,8 +80,8 @@ if (empty($id)) {
                 $sqlUpdatePoin = "UPDATE tiket SET n_poin = n_poin+1 WHERE id_tiket = :id";
                 $sqlInsertEval = "INSERT INTO evaluasi (id_user, id_tiket, minus, plus) VALUES (:id_teknisi, :id, 0, 1)";
             } else {
-                $sqlUpdatePoin = "UPDATE tiket SET n_poin = n_poin+0 WHERE id_tiket = :id";
-                $sqlInsertEval = "INSERT INTO evaluasi (id_user, id_tiket, minus, plus) VALUES (:id_teknisi, :id, 0, 0)";
+                $sqlUpdatePoin = "UPDATE tiket SET n_poin = n_poin+1 WHERE id_tiket = :id";
+                $sqlInsertEval = "INSERT INTO evaluasi (id_user, id_tiket, minus, plus) VALUES (:id_teknisi, :id, 0, 1)";
             }
             $stmtInsertEval = $db->prepare($sqlInsertEval);
             $stmtInsertEval->bindParam(':id_teknisi', $id_teknisi);

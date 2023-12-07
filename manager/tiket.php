@@ -153,7 +153,14 @@
                                                 <a onclick="cektiketdata('.$fetch['id_tiket'].')" class="btn btn-outline-primary mdi mdi-eye"></a>
                                                 '
                                                 ?>
-                                                <a href="https://wa.me/<?php echo $data_user['number_phone']; ?>?text=Hello" class="btn btn-outline-primary mdi mdi-telegram"></a>
+                                                <?php
+                                                if ($fetch['t_priority'] == 1) {
+                                                    $teks = "Urgent";
+                                                } else if ($fetch['t_priority'] == 2) {
+                                                    $teks = "Special Request";
+                                                }
+                                                ?>
+                                                <a href="https://wa.me/<?php echo $data_user['number_phone']; ?>?text=Halo <?php echo $fetch['n_assigned']; ?>, ada tiket <?php echo $teks; ?> nih, segera di cek ya" class="btn btn-outline-primary mdi mdi-telegram"></a>
                                             </td>
                                         </tr>
                                         <?php
