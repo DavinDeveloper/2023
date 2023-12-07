@@ -87,7 +87,6 @@ if (empty($id)) {
             $stmtInsertEval->bindParam(':id_teknisi', $id_teknisi);
             $stmtInsertEval->bindParam(':id', $id);
             $stmtInsertEval->execute();
-            
 
             $stmtUpdatePoin = $db->prepare($sqlUpdatePoin);
             $stmtUpdatePoin->bindParam(':id', $id);

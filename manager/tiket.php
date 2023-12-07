@@ -69,6 +69,7 @@
                                             <th>Assigned To</th>
                                             <th>Units</th>
                                             <th>Status</th>
+                                            <th>Poin</th>
                                             <th>Topic</th>
                                             <th>Action</th>
                                         </tr>
@@ -143,6 +144,9 @@
                                             </td>
                                             <td>
                                                 <?php echo $fetch['t_status']?>
+                                            </td>
+                                            <td>
+                                                <?php echo $fetch['n_poin']?>
                                             </td>
                                             <td>
                                                 <?php echo $fetch['n_topic']?>
