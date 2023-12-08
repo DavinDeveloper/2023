@@ -38,7 +38,7 @@
             <li class="side-nav-title side-nav-item">Apps</li>
             <?php
             $today = date('d-m-Y');
-            $sql = "SELECT COUNT(*) as ticket_count FROM `tiket` WHERE DATE_FORMAT(STR_TO_DATE(t_created_date, '%d-%m-%Y %h:%i %p'), '%d-%m-%Y') = :today";
+            $sql = "SELECT COUNT(*) as ticket_count FROM `tiket` WHERE DATE_FORMAT(STR_TO_DATE(t_created_date, '%d-%m-%Y %h:%i %p'), '%d-%m-%Y') = :today AND t_priority != 0";
             $query = $db->prepare($sql);
             $query->bindParam(':today', $today);
             $query->execute();
