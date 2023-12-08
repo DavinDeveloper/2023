@@ -122,6 +122,10 @@
                                             $query->execute();
                                     
                                             while($fetch = $query->fetch()){
+                                                $sql = "SELECT number_phone FROM users WHERE id = '".$fetch['t_users']."'";
+                                                $check_user = $db->prepare($sql);
+                                                $check_user->execute();
+                                                $data_user = $check_user->fetch();
 
                                         ?>
                                         <tr>
@@ -172,6 +176,8 @@
                                                 <a onclick="cektiketdata('.$fetch['id_tiket'].')" class="btn btn-outline-primary mdi mdi-eye"></a>
                                                 '
                                                 ?>
+                                                <a href="https://wa.me/<?php echo $data_user['number_phone']; ?>?text=Halo <?php echo $fetch['n_users']; ?>, tiket anda telah diterima oleh teknisi" class="btn btn-outline-primary">Process</a>
+                                                <a href="https://wa.me/<?php echo $data_user['number_phone']; ?>?text=Halo <?php echo $fetch['n_users']; ?>, tiket anda sudah dikerjakan oleh teknisi" class="btn btn-outline-primary">Closed</a>
                                             </td>
                                         </tr>
                                         <?php
