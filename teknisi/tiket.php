@@ -41,15 +41,15 @@
                                     <div class="col-sm-12">
                                     <form method="GET" action="tiket.php">
                                         <div class="row mb-2">
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2">
                                                 <input type="date" class="form-control" id="start_date" name="start_date">
                                                 <label for="start_date">Start</label>
                                             </div>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2">
                                                 <input type="date" class="form-control" id="end_date" name="end_date">
                                                 <label for="end_date">End</label>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-8">
                                                 <label>&nbsp;</label>
                                                 <button type="submit" class="btn btn-primary">Filter</button>
                                                 <a class="btn btn-danger" href="tiket.php?1=1">URGENT</a>

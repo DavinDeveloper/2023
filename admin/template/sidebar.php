@@ -36,11 +36,19 @@
             </li>
 
             <li class="side-nav-title side-nav-item">Apps</li>
-
+            <?php
+            $today = date('d-m-Y');
+            $sql = "SELECT COUNT(*) as ticket_count FROM `tiket` WHERE DATE_FORMAT(STR_TO_DATE(t_created_date, '%d-%m-%Y %h:%i %p'), '%d-%m-%Y') = :today";
+            $query = $db->prepare($sql);
+            $query->bindParam(':today', $today);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $ticket_count = $result['ticket_count'];
+            ?>
             <li class="side-nav-item">
                 <a href="tiket.php" class="side-nav-link">
                     <i class="uil-ticket"></i>
-                    <span> Ticket </span>
+                    <span> Ticket <?php if ($ticket_count > 0): ?><button class="btn btn-primary btn-sm"><?php echo $ticket_count; ?></button><?php endif; ?></span>
                 </a>
             </li>
 

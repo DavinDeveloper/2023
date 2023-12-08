@@ -50,7 +50,7 @@
                                                 <input type="date" class="form-control" id="end_date" name="end_date">
                                                 <label for="end_date">End</label>
                                             </div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-8">
                                                 <label>&nbsp;</label>
                                                 <button type="submit" class="btn btn-primary">Filter</button>
                                                 <a class="btn btn-danger" href="tiket.php?1=1">URGENT</a>
