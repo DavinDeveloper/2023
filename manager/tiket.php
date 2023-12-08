@@ -51,6 +51,14 @@
                                                 <button type="submit" class="btn btn-primary">Filter</button>
                                                 <a class="btn btn-danger" href="tiket.php?1=1">URGENT</a>
                                                 <a class="btn btn-warning" href="tiket.php?1=2">SPECIAL REQUEST</a>
+                                                <?php
+                                                $sql = "SELECT * FROM `topic`";
+                                                $query = $db->prepare($sql);
+                                                $query->execute();
+                                                while($fetch = $query->fetch()){
+                                                ?>
+                                                <a class="btn btn-secondary" href="tiket.php?2=<?php echo $fetch['id_topic']?>"><?php echo $fetch['nama_topic']?></a>
+                                                <?php } ?>
                                                 </div>
                                             </div>
                                         </form>
@@ -90,7 +98,7 @@
                                                 $query = $db->prepare($sql);
                                                 $query->bindParam(':start_date', $start_date_formatted);
                                                 $query->bindParam(':end_date', $end_date_formatted);
-                                            } else if ($_GET['1'] == '') {
+                                            } else if ($_GET['1'] == '' AND $_GET['2'] == '') {
                                                 $sql = "SELECT * FROM `tiket` WHERE t_priority != 0";
                                                 $query = $db->prepare($sql);
                                             } else if ($_GET['1'] == 0 OR $_GET['1'] == 1 OR $_GET['1'] == 2) {
@@ -98,6 +106,12 @@
                                                 $sql = "SELECT * FROM `tiket` WHERE t_priority = :priority AND t_priority != 0";
                                                 $query = $db->prepare($sql);
                                                 $query->bindParam(':priority', $priority, PDO::PARAM_INT);
+                                            }
+                                            if (!empty($_GET['2'])) {
+                                                $topic = $_GET['2'];
+                                                $sql = "SELECT * FROM `tiket` WHERE t_topic = :topic AND t_priority != 0";
+                                                $query = $db->prepare($sql);
+                                                $query->bindParam(':topic', $topic, PDO::PARAM_INT);
                                             }
 
                                             $query->execute();
