@@ -60,6 +60,9 @@
                             <a href="topic.php">Topic</a>
                         </li>
                         <li>
+                            <a href="kategori.php">Kategori</a>
+                        </li>
+                        <li>
                             <a href="unit.php">Unit</a>
                         </li>
                     </ul>
